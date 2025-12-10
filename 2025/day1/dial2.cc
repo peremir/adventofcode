@@ -11,18 +11,23 @@ int main() {
 		char direction = input[0];
 		int rotation = stoi(input.substr(1,input.length()));
 
-		if(direction == 'L') // Left
-			dial -= rotation;
-		else if(direction == 'R') // Right
-			dial += rotation;
-		
-		while(dial > 99) {
-			dial -= 100; ++code;
+		if(direction == 'L') { // Left
+			for(int i = 0; i < rotation; ++i) {
+				--dial;
+				if(dial == 0) ++code;
+				if(dial < 0) dial = 99;
+			}
 		}
-		while(dial < 0) {
-			dial += 100; ++code; 
+		else if(direction == 'R') { // Right
+			for(int i = 0; i < rotation; ++i) {
+				++dial;
+				if(dial > 99) {
+					dial = 0;
+					++code;
+				}
+			}
 		}
 	}
 	cout << "The solution is: " << code << endl;
-	// ?
+	// 6027
 }

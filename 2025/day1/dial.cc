@@ -16,7 +16,6 @@ int main() {
 		else if(direction == 'R') // Right
 			dial += rotation;
 		
-			
 		while(dial > 99)
 			dial -= 100;
 		while(dial < 0)
